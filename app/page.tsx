@@ -10,7 +10,7 @@ export default function Home() {
       <main className="max-w-screen-2xl m-auto bg-white">
         {/* Navbar Component */}
         <nav className="bg-white p-2 flex justify-between">
-          <Link href="" className="font-bold text-gray-700 text-2xl">
+          <Link href="/" className="font-bold text-gray-700 text-2xl">
             OpenTable
           </Link>
           <div className="flex">
