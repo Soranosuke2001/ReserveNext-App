@@ -1,20 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "../../components/NavBar";
+import Header from "./components/Header";
 
 export default function RestaurantDetails() {
   return (
     <main className="bg-gray-100 min-h-screen w-screen">
       <main className="max-w-screen-2xl m-auto bg-white">
         <NavBar />
-        {/* Header Component */}
-        <div className="h-96 overflow-hidden">
-          <div className="bg-center bg-gradient-to-r from-[#0f1f47] to-[#5f6984] h-full flex justify-center items-center">
-            <h1 className="text-7xl text-white capitalize text-shadow text-center">
-              Milestones Grill (Toronto)
-            </h1>
-          </div>
-        </div>
+        <Header />
 
         {/* Restaurant Description Component */}
         <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
