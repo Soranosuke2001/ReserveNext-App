@@ -6,10 +6,12 @@ import Description from "./components/Description";
 import RestaurantImages from "./components/RestaurantImages";
 import RestaurantReviews from "./components/RestaurantReviews";
 import Reservation from "./components/Reservation";
+import Head from "./head";
 
 export default function RestaurantDetails() {
   return (
     <>
+      <Head />
       <div className="bg-white w-[70%] rounded p-3 shadow">
         <RestaurantNavBar />
         <Title />
