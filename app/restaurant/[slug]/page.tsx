@@ -1,4 +1,3 @@
-import Image from "next/image";
 import NavBar from "../../components/NavBar";
 import Header from "./components/Header";
 import RestaurantNavBar from "./components/RestaurantNavBar";
@@ -15,8 +14,6 @@ export default function RestaurantDetails() {
       <main className="max-w-screen-2xl m-auto bg-white">
         <NavBar />
         <Header />
-
-        {/* Restaurant Description Component */}
         <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
           <div className="bg-white w-[70%] rounded p-3 shadow">
             <RestaurantNavBar />
@@ -26,7 +23,6 @@ export default function RestaurantDetails() {
             <RestaurantImages />
             <RestaurantReviews />
           </div>
-          {/* Reservation Component */}
           <div className="w-[27%] relative text-reg">
             <Reservation />
           </div>
