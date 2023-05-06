@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "../../components/NavBar";
+import Header from "./components/Header";
 
 export default function Reservation() {
   return (
@@ -9,22 +10,7 @@ export default function Reservation() {
         <NavBar />
         <div className="border-t h-screen">
           <div className="py-9 w-3/5 m-auto">
-            <div className="">
-              <h3 className="font-bold">You're Almost Done!</h3>
-              <div className="mt-5 flex">
-                <Image src="" alt="" className="w-32 h-18 rounded" />
-                <div className="ml-4">
-                  <h1 className="text-3xl font-bold">
-                    Asiana Restaurant Collective
-                  </h1>
-                  <div className="flex mt-3">
-                    <p className="mr-6">Tues, 22, 2023</p>
-                    <p className="mr-6">7:30 PM</p>
-                    <p className="mr-6">3 People</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Header />
             {/* Form Component */}
             <div className="mt-10 flex flex-wrap justify-between w-[660px]">
               <input
