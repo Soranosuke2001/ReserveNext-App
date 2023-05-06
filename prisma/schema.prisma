@@ -48,8 +48,8 @@ model Item {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  restuarant_id Int
-  restaurant    Restaurant @relation(fields: [restuarant_id], references: [id])
+  restaurant_id Int
+  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
 }
 
 model Location {
