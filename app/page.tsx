@@ -22,44 +22,53 @@ export default function Home() {
             </button>
           </div>
         </nav>
-
         {/* Header Component */}
-        <div className="h-96 overflow-hidden">
-          <div className="bg-center bg-gradient-to-r from-[#0f1f47] to-[#5f6984] h-full flex justify-center items-center">
-            <h1 className="text-7xl text-white capitalize text-shadow text-center">
-              Milestones Grill (Toronto)
-            </h1>
+        <div className="bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
+          {/* Search Bar Component */}
+          <div className="text-left text-lg py-3 m-auto flex justify-center">
+            <input
+              className="rounded mr-3 p-2 w-[450px]"
+              type="text"
+              placeholder="State, City or Town"
+            />
+            <button className=" rounded bg-red-600 px-9 py-2 text-white">
+              Let's Go
+            </button>
           </div>
         </div>
-
-        {/* Restaurant Description Component */}
-        <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
-          <div className="bg-white w-[100%] rounded p-3 shadow">
-            <nav className="flex text-reg border-b pb-2">
-              <Link href="" className="mr-7">
-                Overview
-              </Link>
-              <Link href="" className="mr-7">
-                Menu
-              </Link>
-            </nav>
-            {/* Menu Component */}
-            <main className="bg-white mt-5">
-              <div>
-                <div className="mt-4 pb-1 mb-1">
-                  <h1 className="font-bold text-4xl">Menu</h1>
-                </div>
-                <div className="flex flex-wrap-justify-between">
-                  <div className="border rounded p-3 w-[49%] mb-3">
-                    <h3 className="font-bold text-lg">Surf and Turf</h3>
-                    <p className="font-light mt-1 text-sm">
-                      A well-done steak with lobster and rice
-                    </p>
-                    <p className="mt-7">$80.00</p>
-                  </div>
-                </div>
+        <div className="flex py-4 m-auto w-2/3 justify-between items-start">
+          <div className="w-1/5">
+            <div className="border-b pb-4">
+              <h1 className="mb-2">Regions</h1>
+              <p className="font-light text-reg">Toronto</p>
+              <p className="font-light text-reg">Ottowa</p>
+              <p className="font-light text-reg">Vancouver</p>
+              <p className="font-light text-reg">Calgary</p>
+              <p className="font-light text-reg">Kingston</p>
+              <p className="font-light text-reg">Niagra</p>
+            </div>
+            <div className="border-b pb-4 mt-3">
+              <h1 className="mb-2">Cuisine</h1>
+              <p className="font-light text-reg">Mexican</p>
+              <p className="font-light text-reg">Italian</p>
+              <p className="font-light text-reg">Chinese</p>
+              <p className="font-light text-reg">Japanese</p>
+              <p className="font-light text-reg">Korean</p>
+            </div>
+            <div className="mt-3 pb-4">
+              <h1 className="mb-2">Price</h1>
+              <div className="flex">
+                <button className="border w-full text-reg font-light rounded-l p-2">
+                  $
+                </button>
+                <button className="border-r border-t border-b w-full text-reg font-light p-2">
+                  $$
+                </button>
+                <button className="border-r border-t border-b w-full text-reg font-light rounded-r p-2">
+                  $$$
+                </button>
               </div>
-            </main>
+            </div>
           </div>
         </div>
       </main>
