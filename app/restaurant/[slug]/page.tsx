@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavBar from "../../components/NavBar";
 import Header from "./components/Header";
+import RestaurantNavBar from "./components/RestaurantNavBar";
 
 export default function RestaurantDetails() {
   return (
@@ -13,14 +14,7 @@ export default function RestaurantDetails() {
         {/* Restaurant Description Component */}
         <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
           <div className="bg-white w-[70%] rounded p-3 shadow">
-            <nav className="flex text-reg border-b pb-2">
-              <Link href="/restaurant/milestone-grill" className="mr-7">
-                Overview
-              </Link>
-              <Link href="/restaurant/milestone-grill/menu" className="mr-7">
-                Menu
-              </Link>
-            </nav>
+            <RestaurantNavBar />
             <div className="mt-4 border-b pb-6">
               <h1 className="font-bold text-6xl">Milestone Grill</h1>
             </div>
