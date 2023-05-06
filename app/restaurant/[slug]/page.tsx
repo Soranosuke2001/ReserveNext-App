@@ -5,6 +5,7 @@ import RestaurantNavBar from "./components/RestaurantNavBar";
 import Title from "./components/Title";
 import Ratings from "./components/Ratings";
 import Description from "./components/Description";
+import RestaurantImages from "./components/RestaurantImages";
 
 export default function RestaurantDetails() {
   return (
@@ -20,19 +21,7 @@ export default function RestaurantDetails() {
             <Title />
             <Ratings />
             <Description />
-
-            <div>
-              <h1 className="font-bold text-3xl mt-10 mb-7 border-b pb-5">
-                10 Photos
-              </h1>
-              <div className="flex flex-wrap">
-                <Image src="" alt="" className="w-56 h-44 mr-1 mb-1" />
-                <Image src="" alt="" className="w-56 h-44 mr-1 mb-1" />
-                <Image src="" alt="" className="w-56 h-44 mr-1 mb-1" />
-                <Image src="" alt="" className="w-56 h-44 mr-1 mb-1" />
-                <Image src="" alt="" className="w-56 h-44 mr-1 mb-1" />
-              </div>
-            </div>
+            <RestaurantImages />
 
             <div>
               <h1 className="font-bold text-3xl mt-10 mb-7 border-b pb-5">
