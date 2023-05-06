@@ -2,10 +2,10 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Restaurant } from "@prisma/client";
+import { RestaurantCardType } from "../page";
 
 interface RestaurantCardProps {
-  restaurant: Restaurant;
+  restaurant: RestaurantCardType;
 }
 
 const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
