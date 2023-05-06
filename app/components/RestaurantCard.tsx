@@ -1,10 +1,14 @@
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
 
-interface RestaurantCardProps {}
+import { Restaurant } from "@prisma/client";
 
-const RestaurantCard: FC<RestaurantCardProps> = ({}) => {
+interface RestaurantCardProps {
+  restaurant: Restaurant;
+}
+
+const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
     <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
       <Link href="/restaurant/milestones-grill">
