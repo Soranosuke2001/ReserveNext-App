@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import NavBar from "../../components/NavBar";
 import Header from "./components/Header";
 import RestaurantNavBar from "./components/RestaurantNavBar";
 import Title from "./components/Title";
+import Ratings from "./components/Ratings";
 
 export default function RestaurantDetails() {
   return (
@@ -17,15 +17,7 @@ export default function RestaurantDetails() {
           <div className="bg-white w-[70%] rounded p-3 shadow">
             <RestaurantNavBar />
             <Title />
-            <div className="flex items-end">
-              <div className="mt-2 flex items-center">
-                <p>*****</p>
-                <p className="text-reg ml-3">4.9</p>
-              </div>
-              <div>
-                <p className="text-reg ml-4">600 Reviews</p>
-              </div>
-            </div>
+            <Ratings />
 
             <div className="mt-4">
               <p className="text-lg text-light">
