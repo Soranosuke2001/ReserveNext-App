@@ -1,15 +1,14 @@
-'use client'
+"use client";
 
 import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 interface SearchBarProps {}
 
 const SearchBar: FC<SearchBarProps> = ({}) => {
-    const router = useRouter();
-    const [location, setLocation] = useState("");
-  
+  const router = useRouter();
+  const [location, setLocation] = useState("");
+
   return (
     <div className="text-left text-lg py-3 m-auto flex justify-center">
       <input
@@ -22,9 +21,10 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
       <button
         className=" rounded bg-red-600 px-9 py-2 text-white"
         onClick={() => {
-          if (location === "banana") return;
+          if (location === "") return;
 
-          router.push("/search");
+          router.push(`/search?city=${location}`);
+          setLocation("");
         }}
       >
         Let's Go
