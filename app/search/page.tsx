@@ -3,6 +3,7 @@ import RestaurantCard from "./components/RestaurantCard";
 import { PrismaClient } from "@prisma/client";
 import Header from "./components/Header";
 import Head from "./head";
+import SearchBar from "../components/SearchBar";
 
 const prisma = new PrismaClient();
 
@@ -44,7 +45,10 @@ export default async function Search({
   return (
     <>
       <Head />
-      <Header />
+      {/* <Header /> */}
+      <div className="bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
+        <SearchBar />
+      </div>
       <div className="flex py-4 m-auto w-2/3 justify-between items-start">
         <SearchSideBar />
         <div className="w-5/6">
