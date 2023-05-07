@@ -1,26 +1,29 @@
 import { FC } from "react";
+import { Cuisine, Location } from "@prisma/client";
 
-interface SearchSideBarProps {}
+interface SearchSideBarProps {
+  locations: Location[];
+  cuisines: Cuisine[];
+}
 
-const SearchSideBar: FC<SearchSideBarProps> = ({}) => {
+const SearchSideBar: FC<SearchSideBarProps> = ({ locations, cuisines }) => {
   return (
     <div className="w-1/5">
       <div className="border-b pb-4">
         <h1 className="mb-2">Regions</h1>
-        <p className="font-light text-reg">Toronto</p>
-        <p className="font-light text-reg">Ottowa</p>
-        <p className="font-light text-reg">Vancouver</p>
-        <p className="font-light text-reg">Calgary</p>
-        <p className="font-light text-reg">Kingston</p>
-        <p className="font-light text-reg">Niagra</p>
+        {locations.map((region) => (
+          <p key={region.id} className="capitalize font-light text-reg">
+            {region.name}
+          </p>
+        ))}
       </div>
       <div className="border-b pb-4 mt-3">
         <h1 className="mb-2">Cuisine</h1>
-        <p className="font-light text-reg">Mexican</p>
-        <p className="font-light text-reg">Italian</p>
-        <p className="font-light text-reg">Chinese</p>
-        <p className="font-light text-reg">Japanese</p>
-        <p className="font-light text-reg">Korean</p>
+        {cuisines.map((cuisine) => (
+          <p key={cuisine.id} className="capitalize font-light text-reg">
+            {cuisine.name}
+          </p>
+        ))}
       </div>
       <div className="mt-3 pb-4">
         <h1 className="mb-2">Price</h1>

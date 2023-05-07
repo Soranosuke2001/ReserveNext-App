@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 interface SearchBarProps {}
 
-const SearchBar: FC<SearchBarProps> = ({}) => {
+const SearchBar: FC<SearchBarProps> = () => {
   const router = useRouter();
   const [location, setLocation] = useState("");
 
