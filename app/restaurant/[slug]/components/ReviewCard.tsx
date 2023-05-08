@@ -1,12 +1,13 @@
 import { Review } from "@prisma/client";
 import { FC } from "react";
+import Stars from "../../../components/Stars";
 
 interface ReviewCardProps {
   review: Review;
 }
 
 const ReviewCard: FC<ReviewCardProps> = ({ review }) => {
-  const { id, first_name, last_name, rating, restaurant_id, text, user_id } =
+  const { id, first_name, last_name, rating, text } =
     review;
   return (
     <div key={id} className="border-b pb-7 mb-7">
@@ -19,7 +20,7 @@ const ReviewCard: FC<ReviewCardProps> = ({ review }) => {
         </div>
         <div className="ml-10 w-5/6">
           <div className="flex items-center">
-            <div className="flex mr-5">*****</div>
+            <Stars reviews={[]} userReview={rating} />
           </div>
           <div className="mt-5">
             <div className="text-lg font-light">{text}</div>

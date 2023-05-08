@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FC } from "react";
 import Price from "../../components/Price";
 import { CalculateReviewAverage } from "../../../utils/ReviewAverage";
+import Stars from "../../components/Stars";
 
 interface RestaurantCardProps {
   restaurant: {
@@ -42,7 +43,7 @@ const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
       <div className="pl-5">
         <h2 className="text-3xl">{name}</h2>
         <div className="flex items-start">
-          <div className="flex mb-2">*****</div>
+          <Stars reviews={reviews} />
           <p className="ml-2 text-sm">{renderRatingText()}</p>
         </div>
         <div className="mb-9">

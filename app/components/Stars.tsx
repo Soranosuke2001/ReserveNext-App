@@ -9,10 +9,11 @@ import { CalculateReviewAverage } from "../../utils/ReviewAverage";
 
 interface StarsProps {
   reviews: Review[];
+  userReview?: number
 }
 
-const Stars: FC<StarsProps> = ({ reviews }) => {
-  const rating = CalculateReviewAverage(reviews);
+const Stars: FC<StarsProps> = ({ reviews, userReview }) => {
+  const rating = userReview || CalculateReviewAverage(reviews);
 
   const renderStars = () => {
     const stars = [];
