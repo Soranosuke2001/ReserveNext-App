@@ -6,7 +6,7 @@ interface HeaderProps {}
 const Header: FC<HeaderProps> = ({}) => {
   return (
     <div>
-      <h3 className="font-bold">You're Almost Done!</h3>
+      <h3 className="font-bold">You&apos;re Almost Done!</h3>
       <div className="mt-5 flex">
         <Image
           src="https://resizer.otstatic.com/v2/photos/xlarge/1/52282273.jpg"

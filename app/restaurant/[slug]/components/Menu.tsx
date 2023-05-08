@@ -17,7 +17,7 @@ const Menu: FC<MenuProps> = ({ menu }) => {
         {menuLength > 0 ? (
           <div className="flex flex-wrap justify-between">
             {menu.map((item) => (
-              <MenuCard item={item} />
+              <MenuCard key={item.id} item={item} />
             ))}
           </div>
         ) : (

@@ -39,7 +39,7 @@ const Form: FC<FormProps> = ({}) => {
         Complete Reservation
       </button>
       <p className="mt-4 text-small">
-        By clicking "Complete Reservation" you agree to the OpenTable Terms of
+        By clicking &quot;Complete Reservation&quot; you agree to the OpenTable Terms of
         Use and Privacy Policy. Standard text messages rate may apply. You may
         opt out of receiving text messages at any time.
       </p>

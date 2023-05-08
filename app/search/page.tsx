@@ -97,7 +97,7 @@ export default async function Search({
           {restaurants.length ? (
             <>
               {restaurants.map((restaurant) => (
-                <RestaurantCard restaurant={restaurant} />
+                <RestaurantCard key={restaurant.id} restaurant={restaurant} />
               ))}
             </>
           ) : (

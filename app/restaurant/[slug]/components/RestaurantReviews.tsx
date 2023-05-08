@@ -15,7 +15,7 @@ const RestaurantReviews: FC<RestaurantReviewsProps> = ({ reviews }) => {
       </h1>
       <div>
         {reviews.map((review) => (
-          <ReviewCard review={review} />
+          <ReviewCard key={review.id} review={review} />
         ))}
       </div>
     </div>

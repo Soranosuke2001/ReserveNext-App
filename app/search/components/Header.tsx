@@ -12,7 +12,7 @@ const Header: FC<HeaderProps> = ({}) => {
           placeholder="State, City or Town"
         />
         <button className=" rounded bg-red-600 px-9 py-2 text-white">
-          Let's Go
+          Let&apos;s Go
         </button>
       </div>
     </div>

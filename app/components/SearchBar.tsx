@@ -32,7 +32,7 @@ const SearchBar: FC<SearchBarProps> = () => {
         className=" rounded bg-red-600 px-9 py-2 text-white"
         onClick={() => searchSubmitHandler()}
       >
-        Let's Go
+        Let&apos;s Go
       </button>
     </div>
   );
