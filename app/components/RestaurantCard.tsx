@@ -10,7 +10,8 @@ interface RestaurantCardProps {
 }
 
 const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
-  const { id, name, main_image, cuisine, location, price, slug } = restaurant;
+  const { id, name, main_image, cuisine, location, price, slug, reviews } =
+    restaurant;
   return (
     <div
       key={id}
@@ -28,7 +29,11 @@ const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
           <h3 className="font-bold text-2xl mb-2 text-black">{name}</h3>
           <div className="flex items-start">
             <div className="flex mb-2">*****</div>
-            <p className="ml-2">112 Reviews</p>
+            {reviews.length === 0 ? (
+              <p className="ml-2">No Reviews</p>
+            ) : (
+              <p className="ml-2">{reviews.length} Review(s)</p>
+            )}
           </div>
           <div className="flex text-reg font-light capitalize">
             <p className="mr-3">{cuisine.name}</p>
