@@ -76,7 +76,6 @@ export default async function Search({
 }: {
   searchParams: SearchParams;
 }) {
-  const { city } = searchParams;
   const restaurants = await fetchRestaurantsByCity(searchParams);
   const locations = await fetchLocations();
   const cuisines = await fetchCuisines();
@@ -84,7 +83,6 @@ export default async function Search({
   return (
     <>
       <Head />
-      {/* <Header /> */}
       <div className="bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
         <SearchBar />
       </div>
