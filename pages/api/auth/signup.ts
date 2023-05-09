@@ -55,7 +55,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     });
 
     if (errors.length) {
-      return res.status(400).send({ errorMessage: errors[0] });
+      return res.status(400).send({ message: errors[0] });
     }
 
     const userExists = await prisma.user.findUnique({
@@ -87,7 +87,9 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       .setExpirationTime("24h")
       .sign(secret);
 
-    res.status(200).send({ message: user, token });
+    return res.status(200).send({ message: "Successfully Signed Up", token });
     // res.status(200).send({ message: "Complete" });
   }
+
+  return res.status(404).send({ message: "Unknown Endpoint" });
 }
