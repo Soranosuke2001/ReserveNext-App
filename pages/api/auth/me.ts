@@ -8,21 +8,7 @@ const prisma = new PrismaClient();
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   const fullToken = req.headers["authorization"] as string;
-
-  if (!fullToken)
-    return res.status(401).send({ message: "Unauthorized Access" });
-
   const token = fullToken.split(" ")[1];
-
-  if (!token) return res.status(401).send({ message: "Unauthorized Access" });
-
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-
-  try {
-    await jose.jwtVerify(token, secret);
-  } catch (error) {
-    res.status(401).send({ message: "Unauthorized Access" });
-  }
 
   const payload = jwt.decode(token) as { email: string };
 
@@ -42,8 +28,6 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       phone: true,
     },
   });
-
-  console.log(user);
 
   if (!user) return res.status(401).send({ message: "Unauthorized Access" });
 
