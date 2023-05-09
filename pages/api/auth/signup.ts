@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import validator from "validator";
+import bcrypt from "bcrypt";
 
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
@@ -65,6 +66,21 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     if (userExists)
       return res.status(400).send({ message: "Email is already registered" });
 
-    res.status(200).send({ message: "Complete" });
+    // Hashing the password and adding 10 random characters to the right
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.create({
+      data: {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone,
+        city,
+        password: hashedPassword,
+      },
+    });
+
+    res.status(200).send({ message: user });
+    // res.status(200).send({ message: "Complete" });
   }
 }
