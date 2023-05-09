@@ -11,8 +11,8 @@ const NavBar: FC<NavBarProps> = ({}) => {
         OpenTable
       </Link>
       <div className="flex">
-        <LoginModal />
-        <button className="border p-1 px-4 rounded text-black">Sign Up</button>
+        <LoginModal isSignIn={true} />
+        <LoginModal isSignIn={false} />
       </div>
     </nav>
   );
