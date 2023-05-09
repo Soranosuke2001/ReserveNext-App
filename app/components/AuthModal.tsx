@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-export default function AuthModal({ isSignIn }: { isSignIn: Boolean }) {
+export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
   const [open, setOpen] = useState(false);
   const [inputs, setInputs] = useState({
     firstName: "",
@@ -72,7 +72,11 @@ export default function AuthModal({ isSignIn }: { isSignIn: Boolean }) {
                   ? "Log Into Your Account"
                   : "Create Your ReserveNext Account"}
               </h2>
-              <AuthInputs inputs={inputs} handleChangeInput={handleChangeInput} />
+              <AuthInputs
+                inputs={inputs}
+                handleChangeInput={handleChangeInput}
+                isSignIn={isSignIn}
+              />
               <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400">
                 {isSignIn ? "Sign In" : "Sign Up"}
               </button>
