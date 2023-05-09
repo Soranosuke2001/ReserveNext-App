@@ -2,7 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import validator from "validator";
 
-export default function POST(req: NextApiRequest, res: NextApiResponse) {
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     const { firstName, lastName, email, phone, city, password } = req.body;
 
@@ -52,6 +55,15 @@ export default function POST(req: NextApiRequest, res: NextApiResponse) {
     if (errors.length) {
       return res.status(400).send({ errorMessage: errors[0] });
     }
+
+    const userExists = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (userExists)
+      return res.status(400).send({ message: "Email is already registered" });
 
     res.status(200).send({ message: "Complete" });
   }
