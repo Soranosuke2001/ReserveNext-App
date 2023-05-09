@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import LoginModal from "./LoginModal";
+import AuthModal from "./AuthModal";
 
 interface NavBarProps {}
 
@@ -11,8 +11,8 @@ const NavBar: FC<NavBarProps> = ({}) => {
         OpenTable
       </Link>
       <div className="flex">
-        <LoginModal isSignIn={true} />
-        <LoginModal isSignIn={false} />
+        <AuthModal isSignIn={true} />
+        <AuthModal isSignIn={false} />
       </div>
     </nav>
   );
