@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AuthInputs from "./AuthInputs";
+import useAuth from "../../hooks/useAuth";
 
 const style = {
   position: "absolute" as "absolute",
@@ -17,7 +18,9 @@ const style = {
 };
 
 export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
+  const { signin, signup } = useAuth();
   const [open, setOpen] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -29,6 +32,29 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    if (isSignIn) {
+      if (inputs.email && inputs.password) {
+        setSubmitDisabled(false);
+        return;
+      } else {
+        if (
+          inputs.firstName &&
+          inputs.lastName &&
+          inputs.city &&
+          inputs.email &&
+          inputs.password &&
+          inputs.phone
+        ) {
+          setSubmitDisabled(false);
+          return;
+        }
+      }
+    }
+
+    setSubmitDisabled;
+  }, [inputs]);
 
   const buttonContent = (isSignIn: Boolean) => {
     return (
@@ -48,6 +74,12 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
       ...inputs,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = () => {
+    if (isSignIn) {
+      signin({ email: inputs.email, password: inputs.password });
+    }
   };
 
   return (
@@ -77,7 +109,11 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
                 handleChangeInput={handleChangeInput}
                 isSignIn={isSignIn}
               />
-              <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400">
+              <button
+                className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400"
+                disabled={submitDisabled}
+                onClick={handleSubmit}
+              >
                 {isSignIn ? "Sign In" : "Sign Up"}
               </button>
             </div>
