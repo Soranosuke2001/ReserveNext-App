@@ -1,4 +1,7 @@
+"use client";
+
 import { FC } from "react";
+import { partySize } from "../../../../data";
 
 interface ReservationProps {}
 
@@ -11,10 +14,10 @@ const Reservation: FC<ReservationProps> = ({}) => {
       <div className="my-3 flex flex-col">
         <label htmlFor="">Party Size</label>
         <select name="" className="py-3 border-b font-light" id="">
-          <option value="">1 Person</option>
-          <option value="">2 People</option>
-          <option value="">3 People</option>
-          <option value="">4 People</option>
+          {partySize.map((size, index) => (
+            <option key={index} value={size.value} className='text-center'>{size.label}</option>
+
+          ))}
         </select>
       </div>
       <div className="flex justify-between">
