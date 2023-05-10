@@ -92,7 +92,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = () => {    
     if (isSignIn) {
       signin({
         email: inputs.email,

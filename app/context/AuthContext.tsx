@@ -8,7 +8,6 @@ import {
   SetStateAction,
   useEffect,
 } from "react";
-import useAuth from "../../hooks/useAuth";
 import { getCookie } from "cookies-next";
 import axios from "axios";
 
@@ -44,7 +43,7 @@ export const AuthenticationContext = createContext<AuthState>({
 
 const AuthContext: FC<AuthContextProps> = ({ children }) => {
   const [authState, setAuthState] = useState<State>({
-    loading: false,
+    loading: true,
     data: null,
     error: null,
   });
@@ -64,6 +63,8 @@ const AuthContext: FC<AuthContextProps> = ({ children }) => {
           loading: false,
           data: null,
         });
+
+        return;
       }
 
       const response = await axios.get("/api/auth/me", {
