@@ -26,7 +26,6 @@ export default async function RestaurantMenu({
   params: { slug: string };
 }) {
   const menu = await fetchRestaurantMenu(params.slug);
-  console.log(menu)
   return (
     <>
       <Head />

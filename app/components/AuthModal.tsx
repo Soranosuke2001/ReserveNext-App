@@ -20,7 +20,7 @@ const style = {
 };
 
 export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
-  const { error, loading } = useContext(AuthenticationContext);
+  const { error, loading, data } = useContext(AuthenticationContext);
   const { signin, signup } = useAuth();
 
   const [open, setOpen] = useState(false);
@@ -136,6 +136,9 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
               <div className="uppercase font-bold text-center pb-2 border-b mb-2">
                 <p className="text-sm">
                   {isSignIn ? "Sign In" : "Create an Account"}
+                </p>
+                <p>
+                  {data?.firstName} {data?.lastName}
                 </p>
               </div>
               <div className="m-auto">

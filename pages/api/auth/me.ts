@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import * as jose from "jose";
 import * as jwt from "jsonwebtoken";
 
 import { PrismaClient } from "@prisma/client";
@@ -15,7 +14,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   if (!payload.email)
     return res.status(401).send({ message: "Unauthorized Access" });
 
-  const user = await prisma.user.findUnique({
+  const userExists = await prisma.user.findUnique({
     where: {
       email: payload.email,
     },
@@ -29,7 +28,17 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     },
   });
 
-  if (!user) return res.status(401).send({ message: "Unauthorized Access" });
+  if (!userExists)
+    return res.status(401).send({ message: "Unauthorized Access" });
+
+  const user = {
+    firstName: userExists.first_name,
+    lastName: userExists.last_name,
+    email: userExists.email,
+    phone: userExists.phone,
+    city: userExists.phone,
+    id: userExists.id,
+  };
 
   return res.status(200).send({ message: "Complete", user });
 }
