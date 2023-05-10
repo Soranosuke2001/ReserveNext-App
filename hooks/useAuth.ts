@@ -11,9 +11,11 @@ const useAuth = () => {
   const signin = async ({
     email,
     password,
+    handleClose,
   }: {
     email: string;
     password: string;
+    handleClose: () => void;
   }) => {
     setAuthState({
       data: null,
@@ -31,6 +33,8 @@ const useAuth = () => {
         loading: false,
         data: response.data,
       });
+
+      handleClose();
     } catch (error: any) {
       setAuthState({
         data: null,
