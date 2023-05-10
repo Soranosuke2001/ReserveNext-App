@@ -31,22 +31,22 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
 
     if (errors.length) return res.status(400).send({ message: errors[0] });
 
-    const userExists = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         email: enteredEmail,
       },
     });
 
-    if (!userExists)
+    if (!user)
       return res.status(401).send({ message: "Invalid Email or Password" });
 
-    const passwordMatch = await bcrypt.compare(password, userExists.password);
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch)
       return res.status(401).send({ message: "Invalid Email or Password" });
 
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-    const token = await new jose.SignJWT({ email: userExists.email })
+    const token = await new jose.SignJWT({ email: user.email })
       .setProtectedHeader({ alg: "HS256" })
       .setExpirationTime("24h")
       .sign(secret);
@@ -55,11 +55,11 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
 
     return res.status(200).send({
       message: "Successfully Signed In",
-      firstName: userExists.first_name,
-      lastName: userExists.last_name,
-      email: userExists.email,
-      phone: userExists.phone,
-      city: userExists.city,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.email,
+      phone: user.phone,
+      city: user.city,
     });
   }
 

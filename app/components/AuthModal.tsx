@@ -20,7 +20,7 @@ const style = {
 };
 
 export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
-  const { data, error, loading } = useContext(AuthenticationContext);
+  const { error, loading } = useContext(AuthenticationContext);
   const { signin, signup } = useAuth();
 
   const [open, setOpen] = useState(false);
@@ -55,9 +55,21 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
           return;
         }
       }
+    } else if (!isSignIn) {
+      if (
+        inputs.email &&
+        inputs.password &&
+        inputs.firstName &&
+        inputs.lastName &&
+        inputs.phone &&
+        inputs.city
+      ) {
+        setSubmitDisabled(false);
+        return;
+      }
     }
 
-    setSubmitDisabled;
+    setSubmitDisabled(true);
   }, [inputs]);
 
   const buttonContent = (isSignIn: Boolean) => {
@@ -82,7 +94,21 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
 
   const handleSubmit = () => {
     if (isSignIn) {
-      signin({ email: inputs.email, password: inputs.password, handleClose: handleClose});
+      signin({
+        email: inputs.email,
+        password: inputs.password,
+        handleClose: handleClose,
+      });
+    } else {
+      signup({
+        email: inputs.email,
+        password: inputs.password,
+        firstName: inputs.firstName,
+        lastName: inputs.lastName,
+        city: inputs.city,
+        phone: inputs.phone,
+        handleClose,
+      });
     }
   };
 

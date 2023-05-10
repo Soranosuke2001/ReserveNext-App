@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 import * as jose from "jose";
 
 import { PrismaClient } from "@prisma/client";
+import { setCookie } from "cookies-next";
 const prisma = new PrismaClient();
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
@@ -87,8 +88,16 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       .setExpirationTime("24h")
       .sign(secret);
 
-    return res.status(200).send({ message: "Successfully Signed Up", token });
-    // res.status(200).send({ message: "Complete" });
+    setCookie("jwt", token, { req, res, maxAge: 60 * 6 * 24 });
+    
+    return res.status(200).send({
+      message: "Successfully Signed Up",
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.email,
+      phone: user.phone,
+      city: user.city,
+    });
   }
 
   return res.status(404).send({ message: "Unknown Endpoint" });
