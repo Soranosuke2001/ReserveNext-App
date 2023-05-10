@@ -25,7 +25,7 @@ interface AuthState extends State {
   setAuthState: Dispatch<SetStateAction<State>>;
 }
 
-const AuthenticationContext = createContext<AuthState>({
+export const AuthenticationContext = createContext<AuthState>({
   loading: false,
   error: null,
   data: null,

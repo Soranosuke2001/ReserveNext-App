@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AuthInputs from "./AuthInputs";
 import useAuth from "../../hooks/useAuth";
+import { AuthenticationContext } from "../context/AuthContext";
+import { CircularProgress } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
@@ -18,7 +20,9 @@ const style = {
 };
 
 export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
+  const { data, error, loading } = useContext(AuthenticationContext);
   const { signin, signup } = useAuth();
+
   const [open, setOpen] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [inputs, setInputs] = useState({
@@ -92,32 +96,38 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="p-2">
-            <div className="uppercase font-bold text-center pb-2 border-b mb-2">
-              <p className="text-sm">
-                {isSignIn ? "Sign In" : "Create an Account"}
-              </p>
+          {loading ? (
+            <div className="h-full w-full flex justify-center items-center">
+              <CircularProgress />
             </div>
-            <div className="m-auto">
-              <h2 className="text-2xl font-light text-center">
-                {isSignIn
-                  ? "Log Into Your Account"
-                  : "Create Your ReserveNext Account"}
-              </h2>
-              <AuthInputs
-                inputs={inputs}
-                handleChangeInput={handleChangeInput}
-                isSignIn={isSignIn}
-              />
-              <button
-                className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400"
-                disabled={submitDisabled}
-                onClick={handleSubmit}
-              >
-                {isSignIn ? "Sign In" : "Sign Up"}
-              </button>
+          ) : (
+            <div className="p-2">
+              <div className="uppercase font-bold text-center pb-2 border-b mb-2">
+                <p className="text-sm">
+                  {isSignIn ? "Sign In" : "Create an Account"}
+                </p>
+              </div>
+              <div className="m-auto">
+                <h2 className="text-2xl font-light text-center">
+                  {isSignIn
+                    ? "Log Into Your Account"
+                    : "Create Your ReserveNext Account"}
+                </h2>
+                <AuthInputs
+                  inputs={inputs}
+                  handleChangeInput={handleChangeInput}
+                  isSignIn={isSignIn}
+                />
+                <button
+                  className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400"
+                  disabled={submitDisabled}
+                  onClick={handleSubmit}
+                >
+                  {isSignIn ? "Sign In" : "Sign Up"}
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </Box>
       </Modal>
     </div>
