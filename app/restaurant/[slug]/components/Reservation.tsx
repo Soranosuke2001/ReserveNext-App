@@ -1,11 +1,22 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { partySize } from "../../../../data";
+import DatePicker from "react-datepicker";
 
 interface ReservationProps {}
 
 const Reservation: FC<ReservationProps> = ({}) => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      return setSelectedDate(date);
+    }
+
+    return setSelectedDate(null);
+  };
+
   return (
     <div className="fixed w-[15%] bg-white rounded p-3 shadow">
       <div className="text-center border-b pb-2 font-bold">
@@ -15,15 +26,22 @@ const Reservation: FC<ReservationProps> = ({}) => {
         <label htmlFor="">Party Size</label>
         <select name="" className="py-3 border-b font-light" id="">
           {partySize.map((size, index) => (
-            <option key={index} value={size.value} className='text-center'>{size.label}</option>
-
+            <option key={index} value={size.value} className="text-center">
+              {size.label}
+            </option>
           ))}
         </select>
       </div>
       <div className="flex justify-between">
         <div className="flex flex-col w-[48%]">
           <label htmlFor="">Date</label>
-          <input type="text" className="py-3 border-b font-light w-28" />
+          <DatePicker
+            selected={selectedDate}
+            onChange={handleDateChange}
+            className="py-3 border-b font-light text-reg"
+            dateFormat="MMMM d"
+            wrapperClassName="w-[48%]"
+          />
         </div>
         <div className="flex flex-col w-[48%]">
           <label htmlFor="">Time</label>
